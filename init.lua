@@ -4,9 +4,6 @@ print("Neovim Config")
 
 require("config.lazy")
 
--- Example for updating color from treesitter highlights
--- Make sure to apply it after color scheme
-vim.cmd [[hi @function.builtin guifg=lightgreen]]
 
 -- Global orptions.
 -- File specific oftions are set in after/ftplugin/<file_type>.lua
@@ -38,7 +35,7 @@ vim.keymap.set("n", "<space>tt", function()
 	vim.cmd.term()
 end)
 
-vim.keymap.set("t", "<C-e>", '<C-\\><C-n>', {noremap = true})
+vim.keymap.set("t", "<C-e>", '<C-\\><C-n>', { noremap = true })
 -- LSP
 -- Should be default after 0.10.0 but seems not to be in for used 0.10.3 version
 vim.keymap.set("n", "grn", vim.lsp.buf.rename)
@@ -57,3 +54,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		vim.highlight.on_yank({ timeout = 300 })
 	end,
 })
+
+-- Example for updating color from treesitter highlights
+-- Make sure to apply it after color scheme or that color scheme does not define anything which makes it useless
+-- vim.cmd [[hi @function.builtin guifg=pink]]

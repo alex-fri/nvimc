@@ -27,6 +27,7 @@ return {
 			--  }
 			}
 			require("lspconfig").bashls.setup{}
+			require("lspconfig").gopls.setup{}
 		end,
 	}
 }
