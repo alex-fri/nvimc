@@ -26,6 +26,7 @@ return {
 			--		}
 			--  }
 			}
+			require("lspconfig").bashls.setup{}
 		end,
 	}
 }

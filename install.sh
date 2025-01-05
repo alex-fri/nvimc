@@ -10,3 +10,4 @@ sudo apt --yes install gcc-10 gcc-10-base gcc-10-doc g++-10
 sudo apt --yes install libstdc++-10-dev libstdc++-10-doc
 
 sudo snap install --beta nvim --classic
+sudo snap install bash-language-server --classic
