@@ -12,6 +12,11 @@ return {
 				-- For major updates, this must be adjusted manually.
 				version = "^1.0.0",
 			},
+			"tpope/vim-fugitive",
+			{
+				"aaronhallaert/advanced-git-search.nvim",
+				cmd = { "AdvancedGitSearch" },
+			}
 		},
 		config = function()
 			require('telescope').setup {
@@ -23,14 +28,15 @@ return {
 				extensions = {
 					fzf = {},
 					file_browser = {
-      			theme = "dropdown",
-            hijack_netrw = true
-      		},
+						theme = "dropdown",
+						hijack_netrw = true
+					},
 				}
 			}
 
 			require('telescope').load_extension('fzf')
 			require('telescope').load_extension('file_browser')
+			require("telescope").load_extension("advanced_git_search")
 
 			-- find/grep
 			vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
@@ -39,6 +45,9 @@ return {
 
 			-- file explorer
 			vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+
+			-- advanced git search
+			vim.keymap.set("n", "<space>git", ":AdvancedGitSearc<CR>")
 		end
 	}
 }
