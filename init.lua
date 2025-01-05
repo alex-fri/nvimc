@@ -21,7 +21,6 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 -- Quickfix
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
-
 -- Terminal
 vim.api.nvim_create_autocmd('TermOpen', {
 	group = vim.api.nvim_create_augroup('term-open', { clear = true }),
