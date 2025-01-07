@@ -5,7 +5,6 @@ return {
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope-file-browser.nvim',
-			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 			{
 				"nvim-telescope/telescope-live-grep-args.nvim",
 				-- This will not install any breaking changes.
@@ -26,7 +25,6 @@ return {
 					}
 				},
 				extensions = {
-					fzf = {},
 					file_browser = {
 						--theme = "ivy",
 						hijack_netrw = true
@@ -34,7 +32,6 @@ return {
 				}
 			}
 
-			require('telescope').load_extension('fzf')
 			require('telescope').load_extension('file_browser')
 			require("telescope").load_extension("advanced_git_search")
 
