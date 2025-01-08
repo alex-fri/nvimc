@@ -10,6 +10,7 @@ require("config.lazy")
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.number = true
+vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
 
 -- Global key mapping
