@@ -28,6 +28,9 @@ return {
 			}
 			require("lspconfig").bashls.setup{}
 			require("lspconfig").gopls.setup{}
+			require("lspconfig").zls.setup{
+				cmd = { "/home/alef/zig/zls/zls13/zls" }
+			}
 		end,
 	}
 }

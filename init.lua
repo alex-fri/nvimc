@@ -35,7 +35,9 @@ vim.keymap.set("n", "<space>tt", function()
 	vim.cmd.term()
 end)
 
+-- Get to normal mode from terminal mode
 vim.keymap.set("t", "<C-e>", '<C-\\><C-n>', { noremap = true })
+
 -- LSP
 -- Should be default after 0.10.0 but seems not to be in for used 0.10.3 version
 vim.keymap.set("n", "grn", vim.lsp.buf.rename)
@@ -43,7 +45,6 @@ vim.keymap.set("n", "grr", vim.lsp.buf.references)
 vim.keymap.set("n", "gra", vim.lsp.buf.code_action)
 vim.keymap.set("n", "gri", vim.lsp.buf.implementation)
 vim.keymap.set("n", "<space>f", vim.lsp.buf.format)
-
 
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
