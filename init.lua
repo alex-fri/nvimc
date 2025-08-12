@@ -15,13 +15,13 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Global key mapping
 -- Sourcing lua files
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", { desc = "Source current file" })
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
-vim.keymap.set("v", "<space>x", ":lua<CR>")
+vim.keymap.set("v", "<space>x", ":lua<CR>", { desc = "Run selected lua code" })
 
 -- Quickfix
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>", { desc = "Previous quickfix item" })
 -- Terminal
 vim.api.nvim_create_autocmd('TermOpen', {
 	group = vim.api.nvim_create_augroup('term-open', { clear = true }),
@@ -30,21 +30,21 @@ vim.api.nvim_create_autocmd('TermOpen', {
 	end,
 })
 
-vim.keymap.set("n", "<space>tt", function()
+-- new tab
+vim.keymap.set("n", "<space>nt", function()
 	vim.cmd.tabnew()
-	vim.cmd.term()
-end)
+end, { desc = "New tab" })
 
 -- Get to normal mode from terminal mode
 vim.keymap.set("t", "<C-e>", '<C-\\><C-n>', { noremap = true })
 
 -- LSP
 -- Should be default after 0.10.0 but seems not to be in for used 0.10.3 version
-vim.keymap.set("n", "grn", vim.lsp.buf.rename)
-vim.keymap.set("n", "grr", vim.lsp.buf.references)
-vim.keymap.set("n", "gra", vim.lsp.buf.code_action)
-vim.keymap.set("n", "gri", vim.lsp.buf.implementation)
-vim.keymap.set("n", "<space>f", vim.lsp.buf.format)
+vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "Rename symbol under cursor" })
+vim.keymap.set("n", "grr", vim.lsp.buf.references, { desc = "Show references of symbol under cursor" })
+vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "Show code actions for symbol under cursor" })
+vim.keymap.set("n", "gri", vim.lsp.buf.implementation, { desc = "Show implementations of symbol under cursor" })
+vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format current buffer" })
 
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
@@ -59,3 +59,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Example for updating color from treesitter highlights
 -- Make sure to apply it after color scheme or that color scheme does not define anything which makes it useless
 -- vim.cmd [[hi @function.builtin guifg=pink]]
+
+-- Close all buffers but current one
+local function closeAllBuffersButCurrentOne()
+	local bufs = vim.api.nvim_list_bufs()
+	local current_buf = vim.api.nvim_get_current_buf()
+	for _, i in ipairs(bufs) do
+		if i ~= current_buf then
+			vim.api.nvim_buf_delete(i, {})
+		end
+	end
+	print("Closed all buffers but current one")
+end
+vim.keymap.set('n', '<space>Q', closeAllBuffersButCurrentOne, { desc = "Close all buffers but current one" })
+
+-- Clear search highlight
+vim.keymap.set("n", "<space>cs", ":nohlsearch<CR>", { desc = "Clear search highlight" })

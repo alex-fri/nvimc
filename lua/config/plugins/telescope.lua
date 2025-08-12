@@ -28,7 +28,7 @@ return {
 				extensions = {
 					fzf = {},
 					file_browser = {
-						theme = "dropdown",
+						--theme = "ivy",
 						hijack_netrw = true
 					},
 				}
@@ -39,15 +39,16 @@ return {
 			require("telescope").load_extension("advanced_git_search")
 
 			-- find/grep
-			vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
-			vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
-			vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+			vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files, { desc = "Find files" })
+			vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags, { desc = "Find help tags" })
+			vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "Live grep with args" })
 
 			-- file explorer
-			vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+			vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>", { desc = "File browser" })
 
 			-- advanced git search
-			vim.keymap.set("n", "<space>git", ":AdvancedGitSearc<CR>")
+			vim.keymap.set("n", "<space>gs", ":AdvancedGitSearc<CR>", { desc = "Advanced git search" })
+			vim.keymap.set("n", "<space>git", ":G<CR>", { desc = "Git Explorer" })
 		end
 	}
 }
