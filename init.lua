@@ -38,13 +38,15 @@ end, { desc = "New tab" })
 -- Get to normal mode from terminal mode
 vim.keymap.set("t", "<C-e>", '<C-\\><C-n>', { noremap = true })
 
--- LSP
+-- LSP and diagnostics
 -- Should be default after 0.10.0 but seems not to be in for used 0.10.3 version
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "Rename symbol under cursor" })
 vim.keymap.set("n", "grr", vim.lsp.buf.references, { desc = "Show references of symbol under cursor" })
 vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "Show code actions for symbol under cursor" })
 vim.keymap.set("n", "gri", vim.lsp.buf.implementation, { desc = "Show implementations of symbol under cursor" })
 vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format current buffer" })
+vim.keymap.set('n', 'gre', vim.diagnostic.open_float)
+vim.keymap.set('n', 'grle', vim.diagnostic.setloclist)
 
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`

@@ -26,6 +26,15 @@ return {
 				{ silent = true, expr = true, desc = "Accept Copilot suggestion" })
 			vim.api.nvim_set_keymap("n", "<leader>cc", ":CopilotChat<CR>",
 				{ noremap = true, silent = true, desc = "Open Copilot Chat" })
+			vim.api.nvim_set_keymap("n", "<leader>ce", ":CopilotChatExplain<CR>",
+				{ noremap = true, silent = true, desc = "Open Copilot Chat Explain" })
+			vim.api.nvim_set_keymap("v", "<leader>ce", ":CopilotChatExplain<CR>",
+				{ noremap = true, silent = true, desc = "Open Copilot Chat Explain" })
+			vim.api.nvim_set_keymap("n", "<leader>cf", ":CopilotChatFix<CR>",
+				{ noremap = true, silent = true, desc = "Open Copilot Chat To Fix" })
+			vim.api.nvim_set_keymap("v", "<leader>cf", ":CopilotChatFix<CR>",
+				{ noremap = true, silent = true, desc = "Open Copilot Chat To Fix" })
+
 		end,
 		-- See Commands section for default commands if you want to lazy load on them
 	},
