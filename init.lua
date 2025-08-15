@@ -48,6 +48,22 @@ vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format current buf
 vim.keymap.set('n', 'gre', vim.diagnostic.open_float)
 vim.keymap.set('n', 'grle', vim.diagnostic.setloclist)
 
+vim.cmd [[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi NormalText guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+  hi VertSplit guibg=NONE ctermbg=NONE
+  hi StatusLine guibg=NONE ctermbg=NONE
+  hi StatusLineNC guibg=NONE ctermbg=NONE
+  hi LineNr guibg=NONE ctermbg=NONE
+  hi CursorLineNr guibg=NONE ctermbg=NONE
+  hi Pmenu guibg=NONE ctermbg=NONE
+  hi PmenuSbar guibg=NONE ctermbg=NONE
+  hi PmenuSel guibg=NONE ctermbg=NONE
+  hi PmenuThumb guibg=NONE ctermbg=NONE
+]]
+
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
