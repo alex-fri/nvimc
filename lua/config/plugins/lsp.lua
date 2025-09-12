@@ -37,7 +37,7 @@ return {
 				}
 			}
 			require("lspconfig").ruby_lsp.setup {
-				cmd = { "bundle3.0", "exec", "ruby-lsp" },
+				cmd = { "ruby-lsp" },
 				settings = {
 					ruby = {
 						format = {
@@ -45,12 +45,9 @@ return {
 							command = "rubocop",
 						},
 					},
-				},
-				init_options = {
-					formatter = 'standard',
-					linters = { 'standard' },
-				},
+				}
 			}
+
 		end,
 	}
 }

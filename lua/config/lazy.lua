@@ -32,6 +32,12 @@ require("lazy").setup({
 			priority = 1000,
 			config = function() vim.cmd.colorscheme "cyberdream" end
 		},
+		{
+			"neanias/everforest-nvim",
+			version = false,
+			lazy = false,
+			priority = 1000, -- make sure to load this before all the other start plugins
+		},
 		{ import = "config.plugins" },
 	},
 	-- Configure any other settings here. See the documentation for more details.

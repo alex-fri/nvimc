@@ -20,11 +20,11 @@ return {
 		},
 		config = function()
 			require('telescope').setup {
-				pickers = {
-					find_files = {
-						theme = "ivy"
-					}
-				},
+				-- pickers = {
+				-- 	find_files = {
+				-- 		theme = "ivy"
+				-- 	}
+				-- },
 				extensions = {
 					fzf = {},
 					file_browser = {
@@ -40,8 +40,15 @@ return {
 
 			-- find/grep
 			vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files, { desc = "Find files" })
+			vim.keymap.set("n", "<space>fa", function()
+				require("telescope.builtin").find_files({
+					find_command = { "rg", "--files", "--no-ignore", "--hidden", "--glob", "!.git/*" },
+					prompt_title = "Find All Files (including ignored)"
+				})
+			end, { desc = "Find all files (including ignored)" })
 			vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags, { desc = "Find help tags" })
-			vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "Live grep with args" })
+			vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+				{ desc = "Live grep with args" })
 
 			-- file explorer
 			vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>", { desc = "File browser" })
